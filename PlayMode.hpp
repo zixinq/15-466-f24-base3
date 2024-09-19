@@ -23,24 +23,38 @@ struct PlayMode : Mode {
 	struct Button {
 		uint8_t downs = 0;
 		uint8_t pressed = 0;
-	} left, right, down, up;
+    } space, W, S, A, D, R;
 
 	//local copy of the game scene (so code can change it during gameplay):
 	Scene scene;
 
-	//hexapod leg to wobble:
-	Scene::Transform *hip = nullptr;
-	Scene::Transform *upper_leg = nullptr;
-	Scene::Transform *lower_leg = nullptr;
-	glm::quat hip_base_rotation;
-	glm::quat upper_leg_base_rotation;
-	glm::quat lower_leg_base_rotation;
-	float wobble = 0.0f;
+	//player to wobble:
+	Scene::Transform *player = nullptr;
+	glm::quat player_rotation;
 
-	glm::vec3 get_leg_tip_position();
+	float wobble = 0.0f;
+        
+    struct Platform {
+        glm::vec3 min; //bottom-left corner
+        glm::vec3 max; //top-right corner
+    };
+
+    std::vector<Platform> platforms;
+    
+    bool on_ground = true;
+    bool is_jumping = false;
+    
+    bool game_win = false;
+    bool player_died = false;
+    
+    static const glm::vec3 gravity;
+    glm::vec3 ballVelocity;
+    
+
+	glm::vec3 get_player_position();
 
 	//music coming from the tip of the leg (as a demonstration):
-	std::shared_ptr< Sound::PlayingSample > leg_tip_loop;
+	std::shared_ptr< Sound::PlayingSample > rhythm_loop;
 	
 	//camera:
 	Scene::Camera *camera = nullptr;
