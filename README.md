@@ -1,8 +1,8 @@
-# (TODO: your game's title)
+# (Lo-Fi Jump)
 
-Author: (TODO: your name)
+Author: Zixin Qiu
 
-Design: (TODO: In two sentences or fewer, describe what is new and interesting about your game.)
+Design: A 3d rhythm game that requires the player to jump according to the beats.
 
 Screen Shot:
 
@@ -10,6 +10,6 @@ Screen Shot:
 
 How To Play:
 
-(TODO: describe the controls and (if needed) goals/strategy.)
+Press Space to Jump.
 
 This game was built with [NEST](NEST.md).
